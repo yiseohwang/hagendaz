@@ -1,0 +1,476 @@
+/*   1.메인메뉴(padding left first) 서브메뉴 세트로 움직임 -
+   2.다단나누고 서브메뉴...   */
+
+@charset "utf-8";
+
+/* 공통 css */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.cf::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-decoration: none;
+  color: #000;
+}
+
+/* 레이아웃 */
+
+.top_close {
+  background: url(./icon/exit.png) no-repeat;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 20px;
+  right: 0;
+  outline: none;
+  background-size: cover;
+}
+
+/* #headerWrap #header1 #hd1_top .hd1_exit {
+       width: 30px;
+       height: 30px;
+       position: absolute;
+       top: 20px;
+       right: 0;
+   
+   }
+    */
+
+/* header영역 */
+#headerWrapr {
+  width: 100%;
+  height: 274px;
+  background-color: yellow;
+  margin: 0 auto;
+}
+
+/***************** header1********************/
+#headerWrap #header1 {
+  width: 100%;
+  height: 61px;
+  background-color: #efe8da;
+}
+
+#headerWrap #header1 #hd1_top {
+  width: 1272px;
+  height: 61px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#headerWrap #header1 #hd1_top .hd1_event {
+  text-align: center;
+  letter-spacing: -1px;
+  font-size: 1.5em;
+  height: 61px;
+  line-height: 61px;
+  color: #600624;
+  /*   background: pink; */
+}
+
+/* #headerWrap #header1 #hd1_top .hd1_exit {
+       width: 30px;
+       height: 30px;
+       position: absolute;
+       top: 20px;
+       right: 0;
+   
+   }
+    */
+/***************** header2********************/
+#headerWrap #header2 {
+  width: 1272px;
+  height: 161px;
+  margin: 0 auto;
+  position: relative;
+}
+
+#headerWrap #header2 h1.hd2_logo {
+  width: 1272px;
+  height: 161px;
+  color: #600624;
+  /*  background-color: skyblue; */
+  text-align: center;
+  line-height: 161px;
+}
+
+#headerWrap #header2 h1.hd2_logo span {
+  display: none;
+}
+
+#headerWrap #header2 h1.hd2_logo img {
+  width: 159px;
+  height: 75px;
+  margin-top: 40px;
+}
+
+#headerWrap #header2 .hd2_gnb {
+  width: 450px;
+  height: 34px;
+  /*     background-color: aquamarine; */
+  position: absolute;
+  top: 50%;
+  right: -5px;
+  transform: translate(0, -50%);
+}
+
+#headerWrap #header2 .hd2_gnb li {
+  float: left;
+}
+
+#headerWrap #header2 .hd2_gnb li a {
+  padding: 0 7px;
+  color: #600624;
+}
+
+#headerWrap #header2 .hd2_gnb li a:hover {
+  color: rgb(230, 223, 227);
+}
+
+/***************** header3********************/
+#header3 {
+  width: 100%;
+  height: 52px;
+  background-color: #600624;
+}
+
+#header3 #hd3_top {
+  width: 1272px;
+  height: 52px;
+  margin: 0 auto;
+  position: relative;
+  /*   background-color: #cdd52c;   */
+  cursor: pointer;
+}
+
+/* ---------------------------------- */
+/*   #header3 #hd3_top .hd3_ham {   기존 햄버거 위치  
+       width: 180px;
+       height: 52px;
+       float: left;
+       padding-top: 15px;
+       padding-left: 5px;
+       */
+/***************** hambuger********************/
+#hd3_top .hd3_ham {
+  width: 1%;
+  /* 230913 수정 */
+  /* #hd3_top을 100%로 주니 다 차지하여 nav input 떨어짐 */
+  height: 1%;
+}
+
+#hd3_top .hd3_ham input[type="checkbox"] {
+  display: none;
+}
+
+.hamIcon {
+  width: 37px;
+  /* 변경  */
+  height: 37px;
+  position: absolute;
+  line-height: 37px;
+  top: 0;
+  left: 50%;
+  transform: translate(-630px, 0);
+  /* 위치 변경 */
+  cursor: pointer;
+  z-index: 99999;
+  display: block;
+  background: url(./icon/white-ham.png) no-repeat 0 0;
+}
+
+#hamb[type="checkbox"]:checked ~ .modal {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  /* 변경 배경 투명 글씨는 보이게 */
+}
+
+#hamb[type="checkbox"]:checked ~ .modal ul {
+  width: 1272px;
+  height: 450px;
+  background:
+        /* rgba(249, 252, 197, 0.8) */ ;
+  border: 1px solid #600624;
+  position: absolute;
+  bottom: -53px;
+  /* 변경 */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 999999;
+  /* 센터 맞추기 */
+}
+
+.modal ul li {
+  display: none;
+}
+
+/* 햄버거 메뉴 li 조절 */
+#hamb[type="checkbox"]:checked ~ .modal ul li {
+  display: block;
+  padding: 15px 86px;
+  float: left;
+  text-align: center;
+  font-weight: bold;
+  /*  column-rule-color: #600624;
+       column-rule-style:solid;
+       column-rule-width :225px;
+       column-count: 4; 
+        */
+}
+
+#hamb[type="checkbox"]:checked ~ .modal ul li a {
+  text-align: bold;
+  color: #600624;
+  font-size: medium;
+}
+
+#hamb[type="checkbox"]:checked + .hamIcon {
+  /* x 보이게 */
+  /* position: fixed;   */
+  background: url(./icon/white-ham.png) no-repeat 0 -46px;
+}
+
+/***************** hd3 nav********************/
+#hd3_top nav {
+  width: 916px;
+  height: 52px;
+  margin: 0 auto;
+  /* text-align: center; */
+}
+
+#header3 #hd3_top nav .hd3_lnb li {
+  float: left;
+  width: 170px;
+  text-align: center;
+}
+
+/*    #header3 #hd3_top nav .hd3_lnb>li:first-child{
+       padding-left:50px;
+   } */
+
+#header3 #hd3_top nav > .hd3_lnb > li > a {
+  line-height: 52px;
+  color: #fefefe;
+  font-weight: 100;
+  display: block;
+}
+
+/***************** hd3 sub ********************/
+#hd3_top nav .hd3_lnb ul {
+  /* 서브메뉴 영역 */
+  position: absolute;
+  display: none;
+  width: 170px;
+  top: 52px;
+  background-color: #fefefe;
+  opacity: 0.9;
+  border-bottom: 2px solid #600624;
+  height: 265px;
+  /* text-indent: 2px; */
+  /*     padding-left: 3px; */
+  /* 서브메뉴라 한칸 띄우고 싶은데 */
+}
+
+nav ul ul a {
+  /* 서브메뉴 글씨 */
+  width: 170px;
+  display: block;
+  padding: 0;
+  line-height: 38px;
+  color: #141313;
+  /*  padding-left: 3px; */
+}
+
+nav ul ul a:hover {
+  background-color: #efe8da;
+}
+
+#hd3_top nav .hd3_lnb li:hover ul {
+  display: block;
+}
+
+/***************** hd3 search********************/
+#hd3_top .hd3_search {
+  float: right;
+}
+
+.hd3_input {
+  display: block;
+  width: 180px;
+  height: 30px;
+  border-radius: 20px;
+  opacity: 0.2;
+  margin-top: -40px;
+  /* 원래 -45px 햄버거 메뉴를 주니 갑자기 올라가서 값을 변경 */
+  outline: none;
+  padding: 2px;
+}
+
+.hd3_search > i {
+  float: right;
+  display: block;
+  margin-top: -22px;
+  margin-right: 10px;
+  z-index: 100;
+}
+
+/***************************************************************/
+
+/*  메인배너 영역 */
+#bannerArea {
+  /*      position: relative; */
+  width: 100%;
+  height: 532px;
+  overflow: hidden;
+}
+
+#bannerArea > input {
+  display: none;
+}
+
+#bannerArea .bannerWrap .bannerlist {
+  white-space: nowrap;
+}
+
+#bannerArea .bannerWrap .bannerlist li {
+  width: 100%;
+  height: 532px;
+  display: inline-block;
+  transition: all 3s;
+}
+
+#bannerArea .bannerWrap .bannerlist .banner1 {
+  background-image: url(./img/banner1.jpg);
+}
+
+#bannerArea .bannerWrap .bannerlist .banner2 {
+  background-image: url(./img/banner2.jpg);
+}
+
+#bannerArea .bannerWrap .bannerlist li a {
+  display: block;
+  position: relative;
+}
+
+#bannerArea .bannerWrap .bannerlist li a .left {
+  position: absolute;
+  top: 50%;
+  left: 18%;
+  background: url(./icon/dir_left.png) no-repeat;
+  z-index: 999;
+}
+
+#bannerArea .bannerWrap .bannerlist li a .right {
+  position: absolute;
+  top: 50%;
+  right: 18%;
+  background: url(./icon/dir_right.png) no-repeat;
+  z-index: 999;
+}
+
+#bannerArea input:checked .bannerWrap .bannerlist li {
+  transform: translateX(0);
+}
+#bannerArea input:checked .bannerWrap .bannerlist li {
+  transform: translateX(-100%);
+}
+
+#eventArea {
+  margin-top: 125px;
+}
+#eventArea > h2 {
+  color: #600624;
+  text-align: center;
+  margin-bottom: 60px;
+}
+#eventArea ul {
+  margin: 0 auto;
+}
+
+.eventWrap ul li {
+  width: 300px;
+  height: 300px;
+  float: left;
+  margin-left: 20px;
+}
+.eventWrap > li:nth-child(1) {
+  background: url(./img/ice1.jpg) no-repeat;
+  margin-left: 320px;
+}
+.eventWrap > li:nth-child(2) {
+  background: url(./img/ice2.jpg) no-repeat;
+}
+.eventWrap > li:nth-child(3) {
+  background: url(./img/ice3.jpg) no-repeat;
+}
+.eventWrap > li:nth-child(4) {
+  background: url(./img/ice4.jpg) no-repeat;
+}
+
+.eventWrap > ul > li .wh_bg {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 0; /* transition 이용하여 올리겠다는 뜻 */
+  background-color: rgba(237, 225, 225, 0.6);
+  overflow: hidden;
+  transition: height 1s;
+}
+.ev1 > .wh_bg:hover .wh_bg {
+  height: 150px;
+  display: block;
+}
+
+#circWrap > li {
+  background: rgba(0, 0, 0, 0.4);
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  text-align: center;
+  float: left;
+  margin-right: 3px;
+}
+
+#circWrap > li:first-child {
+  margin-left: 48%;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+#delivery_banner img {
+  padding: 50px 0;
+}
+
+#youtube {
+  text-align: center;
+  margin: 20px 0;
+}
+.fa-instagram2 {
+  font-size: 3em;
+}
